@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ItemGroup>
+    <SlnFile Include="**\*.sln" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DebugFile Include="**\debug\**" />
+    <ReleaseFile Include="**\release\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TempDir Include="@(DebugFile->'%(RelativeDir)')" />
+    <TempDir Include="@(ReleaseFile->'%(RelativeDir)')" />
+  </ItemGroup>
+
+  <Target Name="RemoveDuplicateItems">
+    <RemoveDuplicates
+      Inputs="@(TempDir->'%(FullPath)')">
+      <Output
+        TaskParameter="Filtered"
+        ItemName="TempDirs"/>
+    </RemoveDuplicates>
+  </Target>
+
+  <ItemGroup>
+    <TempFile Include="**\*.user" />
+    <TempFile Include="**\*.suo" />
+    <TempFile Include="**\*.ncb" />
+    <TempFile Include="**\*.aps" />
+    <TempFile Include="**\*.log" />
+    <TempFile Include="**\testsuite\*.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TempFiles Include="@(TempFile)" />
+  </ItemGroup>
+
+  <Target Name="Message" DependsOnTargets="RemoveDuplicateItems">
+    <Message Text="SlnFile: @(SlnFile)"/>
+    <Message Text="temp files: @(TempFiles)"/>
+    <Message Text="temp dirs: @(TempDirs)"/>
+  </Target>
+
+  <Target Name="Clean" DependsOnTargets="RemoveDuplicateItems">
+    <Delete Files="@(TempFiles)" />
+    <RemoveDir Directories="@(TempDirs)" />
+  </Target>
+
+  <Target Name="Build">
+    <MSBuild Projects="@(SlnFile)"
+             Properties="Configuration=debug" />
+    <MSBuild Projects="@(SlnFile)"
+             Properties="Configuration=release" />
+  </Target>
+
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build">
+  </Target>
+
+</Project>

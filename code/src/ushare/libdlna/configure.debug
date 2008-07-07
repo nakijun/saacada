@@ -1,0 +1,1 @@
+CFLAGS="-g3 -O0 -Isrc" CXXFLAGS="-g3 -O0 -Isrc" sh ./configure --prefix=/usr --enable-debug --enable-shared --enable-static --disable-optimize --with-ffmpeg-dir=ffmpeg-linux
