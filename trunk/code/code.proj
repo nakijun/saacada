@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="BuildMRS" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ItemGroup>
+    <SlnFile Include="**\*.sln" Exclude="**\Platinum\**;**\cxxtest\**" /> 
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjFile Include="**\*.vcproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DebugFile Include="**\*debug\**" />
+    <ReleaseFile Include="**\*release\**" />
+    <gSOAPFile Include="**\gSOAP\**" />
+    <UpgradeReportFile Include="**\_UpgradeReport_Files\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TempDir Include="@(DebugFile->'%(RelativeDir)')" />
+    <TempDir Include="@(ReleaseFile->'%(RelativeDir)')" />
+    <TempDir Include="@(gSOAPFile->'%(RelativeDir)')" />
+    <TempDir Include="@(UpgradeReportFile->'%(RelativeDir)')" />
+  </ItemGroup>
+
+  <Target Name="RemoveDuplicateItems">
+    <RemoveDuplicates
+      Inputs="@(TempDir->'%(FullPath)')">
+      <Output
+        TaskParameter="Filtered"
+        ItemName="TempDirs"/>
+    </RemoveDuplicates>
+  </Target>
+
+  <ItemGroup>
+    <TempFile Include="**\*.suo" />
+    <TempFile Include="**\*.ncb" />
+    <TempFile Include="**\*.aps" />
+    <TempFile Include="**\*.log" />
+    <TempFile Include="**\*.old" />
+    <TempFile Include="**\*.orig" />
+    <TempFile Include="**\*.rtp" />
+    <TempFile Include="**\*.cache" />
+    <TempFile Include="**\runner.cxx" />
+    <TempFile Include="**\UpgradeLog*.XML" />
+    <TempFile Include="**\testsuite\*.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TempFiles Include="@(TempFile)" />
+  </ItemGroup>
+
+  <Target Name="Message" DependsOnTargets="RemoveDuplicateItems">
+    <Message Text="SlnFile: @(SlnFile)"/>
+    <Message Text="temp files: @(TempFiles)"/>
+    <Message Text="temp dirs: @(TempDirs)"/>
+    <Message Text="source file: @(SourceFile)"/>
+  </Target>
+
+  <Target Name="Clean" DependsOnTargets="RemoveDuplicateItems">
+    <Delete Files="@(TempFiles)" />
+    <RemoveDir Directories="@(TempDirs)" />
+    <RemoveDir Directories="bin" />
+  </Target>
+
+  <Target Name="BuildOneSln">
+    <Exec Command="&quot;C:\Program Files\Microsoft Visual Studio 9.0\Common7\IDE\devenv.com&quot; src\app\relayagent\s21mrs.sln /build Release /project SetupMRS /projectconfig Release /Out C:\MyErrorLog.txt"/>
+  </Target>
+
+  <Target Name="Build">
+    <MSBuild Projects="@(SlnFile)"
+             Properties="Configuration=debug" />
+    <MSBuild Projects="@(SlnFile)"
+             Properties="Configuration=release" />
+    <CallTarget Targets="BuildOneSln" />
+    <!-- D:\CI_Projects\mrs_trunk\code\
+		<CallTarget Targets="BuildOneSln" />
+        <Exec Command="devenv %(SlnFile.FullPath) /rebuild debug /Out C:\MyErrorLog.txt"/>
+        <Exec Command="devenv %(SlnFile.FullPath) /rebuild release /Out C:\MyErrorLog.txt"/>
+		<Exec Command="devenv src\app\relayagent\s21mrs.sln /build Release /project SetupMRS /projectconfig Release /Out C:\MyErrorLog.txt"/>
+		MSBuild code\src\app\relayagent\s21mrs.sln /t:Rebuild /p:Configuration=Debug /l:ThoughtWorks.CruiseControl.MsBuild.XmlLogger,ThoughtWorks.CruiseControl.MSBuild.dll;c:\MyLog.log.xml /verbosity:diag
+		MSBuild code\src\app\relayagent\s21mrs.sln /t:Rebuild /p:Configuration=Release
+		MSBuild code\src\app\relayagent\s21mrs.sln /t:Clean
+		-->
+  </Target>
+
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build">
+  </Target>
+
+  <ItemGroup>
+    <SourceFile Include="**\*.h;**\*.cpp;**\*.c" 
+		Exclude="**\live555\**;**\libupnp\**;**\Platinum\**;**\pthreads\**;**\cxxtest\**" />
+  </ItemGroup>
+
+  <Target Name="Format">
+    <Exec Command="astyle --style=ansi -t --suffix=none &quot;%(SourceFile.FullPath)&quot;"/>
+  </Target>
+
+</Project>

@@ -1,0 +1,1 @@
+sh ./configure --prefix=/usr --enable-debug --enable-shared=yes --enable-static=yes

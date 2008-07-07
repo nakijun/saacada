@@ -1,0 +1,26 @@
+profiles.o: profiles.c dlna_internals.h dlna.h profiles.h containers.h
+containers.o: containers.c containers.h profiles.h dlna_internals.h \
+  dlna.h
+image_jpeg.o: image_jpeg.c dlna_internals.h dlna.h profiles.h \
+  containers.h
+image_png.o: image_png.c dlna_internals.h dlna.h profiles.h containers.h
+audio_aac.o: audio_aac.c dlna_internals.h dlna.h profiles.h containers.h
+audio_ac3.o: audio_ac3.c dlna_internals.h dlna.h profiles.h containers.h
+audio_amr.o: audio_amr.c dlna_internals.h dlna.h profiles.h containers.h
+audio_atrac3.o: audio_atrac3.c dlna_internals.h dlna.h profiles.h \
+  containers.h
+audio_g726.o: audio_g726.c dlna_internals.h dlna.h profiles.h \
+  containers.h
+audio_lpcm.o: audio_lpcm.c dlna_internals.h dlna.h profiles.h \
+  containers.h
+audio_mp2.o: audio_mp2.c dlna_internals.h dlna.h profiles.h containers.h
+audio_mp3.o: audio_mp3.c dlna_internals.h dlna.h profiles.h containers.h
+audio_wma.o: audio_wma.c dlna_internals.h dlna.h profiles.h containers.h
+av_mpeg1.o: av_mpeg1.c dlna_internals.h dlna.h profiles.h containers.h
+av_mpeg2.o: av_mpeg2.c dlna_internals.h dlna.h profiles.h containers.h
+av_mpeg4_part2.o: av_mpeg4_part2.c dlna_internals.h dlna.h profiles.h \
+  containers.h
+av_mpeg4_part10.o: av_mpeg4_part10.c dlna_internals.h dlna.h profiles.h \
+  containers.h
+av_wmv9.o: av_wmv9.c dlna_internals.h dlna.h profiles.h containers.h
+upnp_dms.o: upnp_dms.c dlna_internals.h dlna.h

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Clean" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ItemGroup>
+    <ProjFile Include="code\**\*.proj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <MrsProjFile Include="code\**\*.proj" />
+  </ItemGroup>
+
+  <Target Name="Clean">
+    <MSBuild Projects="@(ProjFile)"
+             Targets="Clean" />
+  </Target>
+
+  <Target Name="Build">
+    <MSBuild Projects="@(MrsProjFile)"
+             Targets="Build" />
+  </Target>
+
+  <Target Name="BuildMRS">
+    <MSBuild Projects="@(MrsProjFile)"
+             Targets="BuildOneSln" />
+  </Target>
+
+  <!--Target Name="Rebuild" DependsOnTargets="Clean;Build">
+  </Target-->
+
+  <Target Name="Cruise" DependsOnTargets="Clean">
+    <Exec Command="svn.exe cleanup"/>
+    <Exec Command="svn.exe update --non-interactive --username admin --password admin"/>
+    <CallTarget Targets="Build"/>
+  </Target>
+
+</Project>

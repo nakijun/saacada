@@ -1,0 +1,1 @@
+sh ./configure --prefix=/usr --disable-debug --enable-dlna --with-libdlna-dir=../libdlna/src/ffmpeg-linux
