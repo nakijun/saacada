@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="BuildMRS" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Rebuild" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <ItemGroup>
     <SlnFile Include="**\*.sln" Exclude="**\Platinum\**;**\cxxtest\**" /> 
@@ -72,7 +72,6 @@
              Properties="Configuration=debug" />
     <MSBuild Projects="@(SlnFile)"
              Properties="Configuration=release" />
-    <CallTarget Targets="BuildOneSln" />
     <!-- D:\CI_Projects\mrs_trunk\code\
 		<CallTarget Targets="BuildOneSln" />
         <Exec Command="devenv %(SlnFile.FullPath) /rebuild debug /Out C:\MyErrorLog.txt"/>
