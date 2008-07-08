@@ -6,14 +6,12 @@ else
 	MAKE_DLNA=$(MAKE)
 endif
 
-all: build-libupnp build-libdlna build-ushare build-s21dlna
+all: build-libupnp build-libdlna build-ushare
 
-clean: clean-libupnp clean-libdlna clean-ushare clean-s21dlna
+clean: clean-libupnp clean-libdlna clean-ushare
 	@find . -type f -name "*~" -exec rm {} \;
 
 install:
-	@cd ./s21dlna && \
-	$(MAKE) install;
 
 build-libupnp:
 	@cd ./libupnp && \

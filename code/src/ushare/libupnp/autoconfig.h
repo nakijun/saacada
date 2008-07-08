@@ -2,7 +2,7 @@
 /* autoconfig.h.in.  Generated from configure.ac by autoheader.  */
 
 /* Define to 1 to compile debug code */
-#define DEBUG 1
+/* #undef DEBUG */
 
 /* Define to 1 if you have the <arpa/inet.h> header file. */
 #define HAVE_ARPA_INET_H 1
@@ -77,10 +77,10 @@
 #define HAVE_VPRINTF 1
 
 /* Define to 1 to prevent compilation of assert() */
-/* #undef NDEBUG */
+#define NDEBUG 1
 
 /* Define to 1 to prevent some debug code */
-/* #undef NO_DEBUG */
+#define NO_DEBUG 1
 
 /* Define to the address where bug reports for this package should be sent. */
 #define PACKAGE_BUGREPORT "mroberto@users.sourceforge.net"
@@ -104,7 +104,7 @@
 #define UPNP_HAVE_CLIENT 1
 
 /* see upnpconfig.h */
-#define UPNP_HAVE_DEBUG 1
+/* #undef UPNP_HAVE_DEBUG */
 
 /* see upnpconfig.h */
 #define UPNP_HAVE_DEVICE 1
@@ -134,7 +134,7 @@
 #define _FILE_OFFSET_BITS 64
 
 /* Define to 1 to make fseeko visible on some hosts (e.g. glibc 2.2). */
-#define _LARGEFILE_SOURCE 1
+/* #undef _LARGEFILE_SOURCE */
 
 /* Large files support */
 #define _LARGE_FILE_SOURCE 
