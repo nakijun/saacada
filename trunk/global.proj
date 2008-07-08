@@ -29,7 +29,7 @@
 
   <Target Name="Cruise" DependsOnTargets="Clean">
     <Exec Command="svn.exe cleanup"/>
-    <Exec Command="svn.exe update --non-interactive --username admin --password admin"/>
+    <Exec Command="svn.exe update --non-interactive"/>
     <CallTarget Targets="Build"/>
   </Target>
 
