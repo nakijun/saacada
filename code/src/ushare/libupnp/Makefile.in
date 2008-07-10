@@ -307,7 +307,7 @@ upnp/inc/stamp-h2: $(top_srcdir)/upnp/inc/upnpconfig.h.in $(top_builddir)/config
 	cd $(top_builddir) && $(SHELL) ./config.status upnp/inc/upnpconfig.h
 
 distclean-hdr:
-	-rm -f autoconfig.h stamp-h1 upnp/inc/upnpconfig.h upnp/inc/stamp-h2
+	-rm -f autoconfig.h stamp-h1 upnp/inc/stamp-h2
 libupnp.pc: $(top_builddir)/config.status $(srcdir)/libupnp.pc.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 
