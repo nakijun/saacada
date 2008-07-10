@@ -1,1 +1,2 @@
-sh ./configure --prefix=/usr --enable-debug=no --enable-shared=yes --enable-static=yes
+CURRENT_DIR=`pwd`
+CFLAGS="-O3" CXXFLAGS="-O3" sh ./configure --prefix=$CURRENT_DIR/../../../build --enable-debug=no --enable-shared=yes --enable-static=yes

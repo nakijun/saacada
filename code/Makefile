@@ -1,14 +1,11 @@
-cruise:
-	cd ./src && $(MAKE) clean
+all:
+	cd ./3rdparty && $(MAKE)
 	cd ./src && $(MAKE)
-	cd ./src && $(MAKE) cleandist tardebug clean
-	cd ./src && $(MAKE) cruise
 
 clean:
+	cd ./3rdparty && $(MAKE) clean
 	cd ./src && $(MAKE) clean
-	rm -f lib/libs21*.a BuildError*
-	find . -type f -name "*~" -exec rm {} \;
-	find . -type f -name "*.tmp" -exec rm {} \;
-
-doc:
-	cd ./src && $(MAKE) cleandoc doc publishdoc
+	@find . -type f -name "*~" -exec rm {} \;
+	@find . -type f -name "*.tmp" -exec rm {} \;
+	@find . -type f -name "*.log" -exec rm {} \;
+	@rm -rf build/
