@@ -9,7 +9,6 @@ endif
 all: build-libupnp build-libdlna build-ushare
 
 clean: clean-libupnp clean-libdlna clean-ushare
-	@find . -type f -name "*~" -exec rm {} \;
 
 install:
 
@@ -22,7 +21,9 @@ build-libupnp:
 
 clean-libupnp:
 	@cd ./libupnp && \
-	$(MAKE) clean; \
+	if [ -e Makefile ]; then \
+	  $(MAKE) distclean; \
+	fi
 
 build-libdlna:
 	@cd ./libdlna && \
@@ -33,7 +34,9 @@ build-libdlna:
 
 clean-libdlna:
 	@cd ./libdlna && \
-	$(MAKE) clean; \
+	if [ -e config.mak ]; then \
+	  $(MAKE) clean; \
+	fi
 
 build-ushare:
 	@cd ./ushare && \
@@ -44,7 +47,9 @@ build-ushare:
 
 clean-ushare:
 	@cd ./ushare && \
-	$(MAKE) clean; \
+	if [ -e config.mak ]; then \
+	  $(MAKE) distclean; \
+	fi
 
 build-s21dlna:
 	@cd ./s21dlna && \
@@ -53,4 +58,3 @@ build-s21dlna:
 clean-s21dlna:
 	@cd ./s21dlna && \
 	$(MAKE) clean
-

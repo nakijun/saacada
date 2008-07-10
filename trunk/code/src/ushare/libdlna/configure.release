@@ -1,1 +1,2 @@
-CFLAGS="-O3 -Isrc" CXXFLAGS="-O3 -Isrc" sh ./configure --prefix=/usr --disable-debug --enable-shared --enable-static --with-ffmpeg-dir=ffmpeg-linux
+CURRENT_DIR=`pwd`
+CFLAGS="-O3 -Isrc" CXXFLAGS="-O3 -Isrc" sh ./configure --prefix=$CURRENT_DIR/../../../build --disable-debug --enable-shared --enable-static --with-ffmpeg-dir=ffmpeg-linux

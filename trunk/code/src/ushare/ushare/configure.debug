@@ -1,1 +1,2 @@
-sh ./configure --prefix=/usr --enable-debug --enable-dlna --with-libdlna-dir=../libdlna/src/ffmpeg-linux
+CURRENT_DIR=`pwd`
+CFLAGS="-g3 -O0 -I$CURRENT_DIR/../../../build/include" CXXFLAGS="-g3 -O0 -I$CURRENT_DIR/../../../build/include" LDFLAGS="-L$CURRENT_DIR/../../../build/lib" PKG_CONFIG_PATH="$CURRENT_DIR/../../../build/lib/file:///root/saacada/code/build/lib/pkgconfig" sh ./configure --prefix=$CURRENT_DIR/../../../build --enable-debug --enable-dlna
