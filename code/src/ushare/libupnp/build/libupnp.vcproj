@@ -50,7 +50,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				InlineFunctionExpansion="1"
-				AdditionalIncludeDirectories="..\ixml\src\inc;..\ixml\inc;..\threadutil\inc;..\upnp\inc;..\upnp\src\inc;..\build\inc;..\..\iso_c9x;..\..\pthreads"
+				AdditionalIncludeDirectories="..\ixml\src\inc;..\ixml\inc;..\threadutil\inc;..\upnp\inc\win32;..\upnp\inc;..\upnp\src\inc;..\build\inc;..\..\iso_c9x;..\..\pthreads"
 				PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS;PTW32_STATIC_LIB;UPNP_STATIC_LIB;WIN32;_WINDOWS;_USRDLL;LIBUPNP_EXPORTS;UPNP_USE_MSVCPP"
 				StringPooling="true"
 				RuntimeLibrary="2"
@@ -125,7 +125,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\ixml\src\inc;..\ixml\inc;..\threadutil\inc;..\upnp\inc;..\upnp\src\inc;..\build\inc;..\..\iso_c9x;..\..\pthreads"
+				AdditionalIncludeDirectories="..\ixml\src\inc;..\ixml\inc;..\threadutil\inc;..\upnp\inc\win32;..\upnp\inc;..\upnp\src\inc;..\build\inc;..\..\iso_c9x;..\..\pthreads"
 				PreprocessorDefinitions="_CRT_SECURE_NO_WARNINGS;UPNP_STATIC_LIB;DEBUG;WIN32;_WINDOWS;_USRDLL;LIBUPNP_EXPORTS;UPNP_USE_MSVCPP;__CLEANUP_C"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"

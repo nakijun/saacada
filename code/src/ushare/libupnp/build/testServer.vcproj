@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\upnp\src\inc;..\upnp\sample\tvcombo;..\upnp\sample\common;..\threadutil\inc;..\upnp\inc;..\ixml\inc;..\..\pthreads"
+				AdditionalIncludeDirectories="..\upnp\src\inc;..\upnp\sample\tvcombo;..\upnp\sample\common;..\threadutil\inc;..\upnp\inc\win32;..\upnp\inc;..\ixml\inc;..\..\pthreads"
 				PreprocessorDefinitions="WIN32;DEBUG;_CONSOLE;UPNP_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;__CLEANUP_C"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -117,7 +117,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\upnp\src\inc;..\upnp\sample\tvcombo;..\upnp\sample\common;..\threadutil\inc;..\upnp\inc;..\ixml\inc;..\..\pthreads"
+				AdditionalIncludeDirectories="..\upnp\src\inc;..\upnp\sample\tvcombo;..\upnp\sample\common;..\threadutil\inc;..\upnp\inc\win32;..\upnp\inc;..\ixml\inc;..\..\pthreads"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;UPNP_STATIC_LIB;_CRT_SECURE_NO_WARNINGS;UPNP_USE_MSVCPP;PTW32_STATIC_LIB"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
