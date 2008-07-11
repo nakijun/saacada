@@ -1,2 +1,2 @@
 CURRENT_DIR=`pwd`
-CFLAGS="-O3 -I$CURRENT_DIR/../../../build/include" CXXFLAGS="-O3 -I$CURRENT_DIR/../../../build/include" LDFLAGS="-L$CURRENT_DIR/../../../build/lib" PKG_CONFIG_PATH="$CURRENT_DIR/../../../build/lib/file:///root/saacada/code/build/lib/pkgconfig" sh ./configure --prefix=$CURRENT_DIR/../../../build --enable-dlna
+CFLAGS="-O3 -I$CURRENT_DIR/../../../build/include" CXXFLAGS="-O3 -I$CURRENT_DIR/../../../build/include" LDFLAGS="-L$CURRENT_DIR/../../../build/lib" PKG_CONFIG_PATH="$CURRENT_DIR/../../../build/lib/pkgconfig" sh ./configure --prefix=$CURRENT_DIR/../../../build --enable-dlna
