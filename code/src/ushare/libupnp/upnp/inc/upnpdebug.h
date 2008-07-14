@@ -1,7 +1,7 @@
 /*******************************************************************************
  *
  * Copyright (c) 2000-2003 Intel Corporation 
- * Copyright (c) 2006 Rémi Turboult <r3mi@users.sourceforge.net>
+ * Copyright (c) 2006 Rï¿½mi Turboult <r3mi@users.sourceforge.net>
  * All rights reserved. 
  *
  * Redistribution and use in source and binary forms, with or without 
@@ -127,7 +127,7 @@ static UPNP_INLINE int UpnpInitLog() { return UPNP_E_SUCCESS; }
 #ifdef DEBUG
 void UpnpSetLogLevel(Upnp_LogLevel log_level);
 #else
-static UPNP_INLINE void UpnpSetLogLevel(Upnp_LogLevel log_level) {}
+static UPNP_INLINE void UpnpSetLogLevel(Upnp_LogLevel log_level) {(void)(log_level);}
 #endif
 
 
@@ -168,7 +168,7 @@ void UpnpSetLogFileNames(
 #else
 static UPNP_INLINE void UpnpSetLogFileNames(
 	const char *ErrFileName,
-	const char *InfoFileName) {}
+	const char *InfoFileName) {(void)(ErrFileName);(void)(InfoFileName);}
 #endif
 
 
@@ -193,6 +193,7 @@ FILE *UpnpGetDebugFile(Upnp_LogLevel level, Dbg_Module module);
 #else
 static UPNP_INLINE FILE *UpnpGetDebugFile(Upnp_LogLevel level, Dbg_Module module)
 {
+	(void)(level);(void)(module);
 	return NULL;
 }
 #endif
@@ -220,7 +221,7 @@ int DebugAtThisLevel(
 #else
 static UPNP_INLINE int DebugAtThisLevel(
 	IN Upnp_LogLevel DLevel,
-	IN Dbg_Module Module) { return 0; }
+	IN Dbg_Module Module) { (void)(DLevel);(void)(Module);return 0; }
 #endif
 
 
@@ -265,7 +266,7 @@ static UPNP_INLINE void UpnpPrintf(
 	const char* DbgFileName,
 	int DbgLineNo,
 	const char* FmtStr,
-	...) {}
+	...) {(void)(DLevel);(void)(Module);(void)(DbgFileName);(void)(DbgLineNo);(void)(FmtStr);}
 #endif /* DEBUG */
 
 
@@ -294,7 +295,7 @@ static UPNP_INLINE void UpnpDisplayBanner(
 	FILE *fd,
 	const char **lines,
 	size_t size,
-	int starlength) {}
+	int starlength) {(void)(fd);(void)(lines);(void)(size);(void)(starlength);}
 #endif
 
 
@@ -321,7 +322,7 @@ void UpnpDisplayFileAndLine(
 static UPNP_INLINE void UpnpDisplayFileAndLine(
 	FILE *fd,
 	const char *DbgFileName,
-	int DbgLineNo) {}
+	int DbgLineNo) {(void)(fd);(void)(DbgFileName);(void)(DbgLineNo);}
 #endif
 
 /*! @} */
