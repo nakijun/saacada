@@ -95,4 +95,10 @@
     <Exec Command="astyle --style=ansi -t --suffix=none &quot;%(SourceFile.FullPath)&quot;"/>
   </Target>
 
+  <Target Name="Cruise" DependsOnTargets="Clean">
+    <Exec Command="svn.exe cleanup"/>
+    <Exec Command="svn.exe update --non-interactive"/>
+    <CallTarget Targets="Build"/>
+  </Target>
+
 </Project>
